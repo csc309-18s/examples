@@ -1,0 +1,52 @@
+{ 
+    "longlist" : [
+        {
+            "author": "Mona Awad",
+            "title": "13 Ways of Looking at a Fat Girl"
+        },
+        {
+            "author": "Gary Barwin",
+            "title":  "Yiddish for Pirates"
+        },
+        {
+            "author": "Andrew Battershill",
+            "title": "Pillow"
+        },
+        {
+            "author": "David Bergen",
+            "title": "Stranger"
+        },
+        {
+            "author": "Emma Donoghue",
+            "title": "The Wonder"
+        },
+        {
+            "author": "Catherine Leroux",
+            "title": "The Party Wall"
+        },
+        {
+            "author": "Kathy Page", 
+            "title": "The Two of Us"
+        },
+        {
+            "author": "Susan Perly",
+            "title": "Death Valley"
+        },
+        {
+            "author": "Kerry Lee Powell",
+            "title": "Willem De Kooning’s Paintbrush"
+        },
+        {
+            "author": "Steven Price",
+            "title": "By Gaslight"
+        },
+        {
+            "author": "Madeleine Thien", 
+            "title": "Do Not Say We Have Nothing"
+        },
+        {
+            "author": "Zoe Whittall",
+            "title": "The Best Kind of People"
+        }
+    ]
+}

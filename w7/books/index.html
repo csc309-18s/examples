@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css?v=1.0" type="text/css">
+    
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="/scripts/showBooks.js"></script>
+    <title>Giller Long List</title>
+</head>
+
+<body>
+    <h1>Giller Book Prize Long List</h1>
+    
+    <ol id="blist">
+        
+    </ol>
+    
+    <h2>Add book</h2>
+    <form id="add" method="post">
+        <label id="authorField">
+            <span class="label">Author: </span>
+            <input type="text" id="author" name="author"></input>
+        </label>
+        
+        <label id="titleField">
+            <span class="label">Title: </span>
+            <input type="text" id="title" name="title"></input>
+        </label>
+        
+        <input id="addButton" type="submit" value="Submit">
+    </form>
+    
+    <h2>Remove Book</h2>
+    <form id="remove" method="post">
+        <label>
+            <span class="label">Book Number to Remove:</span>
+            <input type="text" id="number" name="number"></input>
+            <input id="rmButton" type="submit" value="Submit">
+        </label>
+    </form>
+</body>
+</html>
