@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const morgan = require('morgan');
 
+const cookieParser = require('cookie-parser');
+
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,11 +22,18 @@ app.use(bodyParser.urlencoded({extended: false}));
 // fully supported by front end actions
 app.use(methodOverride("_method"));
 
+app.use(cookieParser("my very well kept secret"))
+
+
 // Adding in our own middleware logger
 function myLogger(req, res, next) {
+  console.log("Raw Cookies: ",req.headers.cookie)
+  console.log("Cookie Parser: ",req.cookies)
+  console.log("Signed Cookies: ",req.signedCookies)
   if (req.body) {
     console.log('LOG:',req.method,req.url,req.body)
   }
+   res.append('Set-Cookie', 'lastPage='+req.url);
   next()
 }
 
@@ -72,6 +82,10 @@ app.post("/courses", (req, res) => {
     what: req.body.what,
     who: req.body.who
   });
+
+  res.cookie('Prof',req.body.who)
+  res.cookie('Course',req.body.code, {signed:true})
+
 
   res.redirect("/courses")
 });
