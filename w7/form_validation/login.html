@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        
+        <title>Form Validation Example: Server-Side Validation</title>
+        <meta name="description" content="Form example">
+        <meta name="author" content="CSC309">
+        
+        <link rel="stylesheet" href="css/styles.css?v=1.0">
+    </head>
+    
+    <body>
+        
+        <form action="/signup" method="post">
+            <label id="usernameField">
+                <span class="label">Username</span>
+                <input type="text" id="username" name="username">
+                    <span class="error"><%- errors.error_username %></span>
+            </label>
+            
+            <label id="passwordField">
+                <span class="label">Password</span>
+                <input type="password" id="password" name="password">
+                <span class="error"><%- errors.error_password %></span>
+            </label>
+            
+            <input id="ServerSideButton" type="submit" value="Submit">
+        </form>
+        
+    </body>
+</html>

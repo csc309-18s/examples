@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>click count</title>
+    </head>
+    <body>
+        
+        <h1> Count clicks </h1>
+        
+        <button type="button" onclick="counter()">click me</button>
+            
+        <p id="result"></p>
+        
+        <button type="button" onclick="sessionStorage.clear()">Clear session storage</button>
+        
+        <script>
+        
+        function counter() {
+            if (sessionStorage.clickcount) {
+                sessionStorage.clickcount =   
+                        Number(sessionStorage.clickcount) + 1;
+            } else {
+                sessionStorage.clickcount = 1;
+            }
+            document.getElementById("result").innerHTML = 
+                "You have clicked the button " +
+                sessionStorage.clickcount + 
+                " time(s) in this session.";
+        }
+        </script>
+    </body>
+</html>
