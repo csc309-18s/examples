@@ -76,4 +76,24 @@ describe('Server', () => {
       });
     });
   });
+  
+  describe('GET /courses/:id/edit', () => {
+    it('should not return 404', (done) => {
+      this.request.get('/courses/CSC309/edit', (error, response) => {
+        if (error) { done(error); }
+        assert.notEqual(response.statusCode, 404);
+        done();
+      });
+    }); 
+    
+    it('should return a page that has the info about a course in the form', (done) => {
+      this.request.get('/courses/CSC309/edit', (error, response) => {
+        if (error) { done(error); }
+        assert(response.body.indexOf('Gonzalez'),
+               `"${response.body}" does not include "${'Gonzalez'}".`);
+        done();
+      }); 
+    });
+  });
+  
 });
