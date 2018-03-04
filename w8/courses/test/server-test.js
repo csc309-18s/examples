@@ -2,6 +2,7 @@ const assert = require('assert');
 const methods = require('../app.js');
 const app = methods.app;
 const db = methods.db;
+const fixtures = require('./fixtures');
 const request = require('request');
 
 describe('Server', () => {
@@ -46,20 +47,28 @@ describe('Server', () => {
 
   describe('POST /courses', () => {
 
+    it('should not return 404', (done) => {
+      this.request.post('/courses', (error, response) => {
+        if (error) { 
+          done(error); 
+        }
+        assert.notEqual(response.statusCode, 404);
+        done();
+      });
+    });
+    
     it('should receive and store data', (done) => {
-      var validCourse = {
-          code: 'CSC209',
-	      what: 'Software Tools',
-	      who: 'Liu'
-      };
+      let payload = fixtures.validCourse;
 
-      this.request.post('/courses', { form: validCourse }, (error, response) => {
-        if (error) { done(error); }
+      this.request.post('/courses', { form: payload }, (error, response) => {
+        if (error) { 
+          done(error); 
+        }
 
-		let courses = db.findAll();
-		console.log(courses);
-		console.log('length: ' + Object.keys(courses).length);
-		let coursesSize = Object.keys(courses).length;
+        let courses = db.findAll();
+        console.log(courses);
+        console.log('length: ' + Object.keys(courses).length);
+        let coursesSize = Object.keys(courses).length;
 
         assert.equal(coursesSize, 2, `Expected 2 courses, found ${coursesSize}`);
 
