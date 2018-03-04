@@ -1,0 +1,4 @@
+script:
+  - cd examples/courses
+  - npm install
+  - npm test
