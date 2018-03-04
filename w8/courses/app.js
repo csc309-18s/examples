@@ -76,17 +76,17 @@ app.get("/courses/csc404", (req, res) => {
 });
 
 app.post("/courses", (req, res) => {
-  db.add({
-    id: req.body.code,
-    when: new Date(),
-    what: req.body.what,
-    who: req.body.who
-  });
+  if(req.body.code) {
+    db.add({
+      id: req.body.code,
+      when: new Date(),
+      what: req.body.what,
+      who: req.body.who
+    });
 
-  res.cookie('Prof',req.body.who)
-  res.cookie('Course',req.body.code, {signed:true})
-
-
+    res.cookie('Prof',req.body.who)
+    res.cookie('Course',req.body.code, {signed:true})
+  }
   res.redirect("/courses")
 });
 
