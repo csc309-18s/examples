@@ -1,4 +1,4 @@
 script:
-  - cd examples/w8/courses
+  - cd w8/courses
   - npm install
   - npm test
