@@ -1,0 +1,4 @@
+script:
+  - cd w8/courses
+  - npm install
+  - npm test
