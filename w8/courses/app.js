@@ -115,7 +115,6 @@ if(!module.parent) {
   });
 }
 
-module.exports = app;
 
 const db = (function() {
   let database = {
@@ -144,9 +143,8 @@ const db = (function() {
   };
 })();
 
-
-
-
-  
-
-
+module.exports = {
+	app : app,
+	db : db
+};
+	

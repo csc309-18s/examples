@@ -1,5 +1,7 @@
 const assert = require('assert');
-const app = require('../app');
+const methods = require('../app.js');
+const app = methods.app;
+const db = methods.db;
 const request = require('request');
 
 describe('Server', () => {
@@ -32,7 +34,7 @@ describe('Server', () => {
     assert(app);
   });
 
-  describe('GET/', () => {
+  describe('GET /', () => {
     it('should return a 200', (done) => {
       this.request.get('/', (error, response) => {
         assert.equal(response.statusCode, 200);
@@ -42,4 +44,27 @@ describe('Server', () => {
   });
 
 
+  describe('POST /courses', () => {
+
+    it('should receive and store data', (done) => {
+      var validCourse = {
+          code: 'CSC209',
+	      what: 'Software Tools',
+	      who: 'Liu'
+      };
+
+      this.request.post('/courses', { form: validCourse }, (error, response) => {
+        if (error) { done(error); }
+
+		let courses = db.findAll();
+		console.log(courses);
+		console.log('length: ' + Object.keys(courses).length);
+		let coursesSize = Object.keys(courses).length;
+
+        assert.equal(coursesSize, 2, `Expected 2 courses, found ${coursesSize}`);
+
+        done();
+      });
+    });
+  });
 });
