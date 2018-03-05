@@ -1,42 +1,44 @@
+/* eslint-env mocha */
+/* eslint no-unused-vars: "warn" */
+/* eslint no-console: "off" */
+
 const assert = require('assert');
-const methods = require('../app.js');
-const app = methods.app;
-const db = methods.db;
+const app = require('../app.js');
+const db = require('../mockdb.js');
 const fixtures = require('./fixtures');
 const request = require('request');
 
 describe('Server', () => {
-
   /* We will need to start up the server to be listening for requests before
    * a test runs, and shut it down after the test is finished.
    */
-  before(done => {
+  before((done) => {
     this.port = 3888;
 
     this.server = app.listen(this.port, (err, result) => {
       if (err) { return done(err); }
-      done();
+      return done();
     });
 
-	// Set default URL in request so that we don't need to replicate the
-	// hard coded port number
-	this.request = request.defaults({
-	  baseUrl: 'http://localhost:3888/'
-	});
+    // Set default URL in request so that we don't need to replicate the
+    // hard coded port number
+    this.request = request.defaults({
+      baseUrl: 'http://localhost:3888/',
+    });
   });
-  
+
   after(() => {
     this.server.close();
   });
 
-  beforeEach(done => {
-    console.log("BEFORE");
+  beforeEach((done) => {
+    console.log('BEFORE');
     console.log(db.findAll());
-  	db.drop();
-	db.add(fixtures.courseZero);
-    console.log("AFTER");
+    db.drop();
+    db.add(fixtures.courseZero);
+    console.log('AFTER');
     console.log(db.findAll());
-	done();
+    done();
   });
 
 
@@ -56,29 +58,28 @@ describe('Server', () => {
 
 
   describe('POST /courses', () => {
-
     it('should not return 404', (done) => {
       this.request.post('/courses', (error, response) => {
-        if (error) { 
-          done(error); 
+        if (error) {
+          done(error);
         }
         assert.notEqual(response.statusCode, 404);
         done();
       });
     });
-    
+
     it('should receive and store data', (done) => {
-      let payload = fixtures.courseEdit;
+      const payload = fixtures.courseEdit;
 
       this.request.post('/courses', { form: payload }, (error, response) => {
-        if (error) { 
-          done(error); 
+        if (error) {
+          done(error);
         }
 
-        let courses = db.findAll();
+        const courses = db.findAll();
         console.log(courses);
-        console.log('length: ' + Object.keys(courses).length);
-        let coursesSize = Object.keys(courses).length;
+        console.log(`length:  ${Object.keys(courses).length}`);
+        const coursesSize = Object.keys(courses).length;
 
         assert.equal(coursesSize, 2, `Expected 2 courses, found ${coursesSize}`);
 
@@ -86,7 +87,7 @@ describe('Server', () => {
       });
     });
   });
-  
+
   describe('GET /courses/:id/edit', () => {
     it('should not return 404', (done) => {
       this.request.get('/courses/CSC309/edit', (error, response) => {
@@ -94,27 +95,28 @@ describe('Server', () => {
         assert.notEqual(response.statusCode, 404);
         done();
       });
-    }); 
-    
+    });
+
     it('should return a page that has the info about a course in the form', (done) => {
       this.request.get('/courses/CSC309/edit', (error, response) => {
         if (error) { done(error); }
-        assert(response.body.indexOf('Gonzalez'),
-               `"${response.body}" does not include "${'Gonzalez'}".`);
+        assert(
+          response.body.indexOf('Gonzalez'),
+          `'${response.body}' does not include '${'Gonzalez'}'.`,
+        );
         done();
-      }); 
+      });
     });
   });
 
   describe('DELETE /courses/:id', () => {
     it('should remove a course from the db object', (done) => {
-	  this.request.delete('/courses/CSC309', (error, response) => {
-	    let courses = db.findAll();
-		console.log(courses);
-		assert(1 == 0, 'placeholder');
-	  });
-	  done();
-	});
+      this.request.delete('/courses/CSC309', (error, response) => {
+        const courses = db.findAll();
+        console.log(courses);
+        assert(1 === 0, 'placeholder');
+      });
+      done();
+    });
   });
-  
 });
