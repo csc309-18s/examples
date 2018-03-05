@@ -31,6 +31,8 @@ describe('Server', () => {
     this.server.close();
   });
 
+  // Runs before every test and is used to ensure that the data is in a
+  // consistent state.
   beforeEach((done) => {
     db.drop();
     db.add(fixtures.courseZero);
@@ -59,7 +61,10 @@ describe('Server', () => {
         if (error) {
           done(error);
         }
+        console.log(db.findAll());
         assert.notEqual(response.statusCode, 404);
+        const coursesSize = Object.keys(db.findAll()).length;
+        assert.equal(coursesSize, 1, `Expected 1 course, found ${coursesSize}`);
         done();
       });
     });
@@ -76,7 +81,6 @@ describe('Server', () => {
         console.log(courses);
         console.log(`length:  ${Object.keys(courses).length}`);
         const coursesSize = Object.keys(courses).length;
-
         assert.equal(coursesSize, 2, `Expected 2 courses, found ${coursesSize}`);
 
         done();
