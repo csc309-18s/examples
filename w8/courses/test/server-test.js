@@ -32,12 +32,8 @@ describe('Server', () => {
   });
 
   beforeEach((done) => {
-    console.log('BEFORE');
-    console.log(db.findAll());
     db.drop();
     db.add(fixtures.courseZero);
-    console.log('AFTER');
-    console.log(db.findAll());
     done();
   });
 
