@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha",
+	"lint": "./node_modules/.bin/eslint .; exit 0", 
     "start": "node app.js"
   },
   "keywords": [],
@@ -19,6 +20,9 @@
     "morgan": "^1.9.0"
   },
   "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
     "mocha": "^5.0.1",
     "request": "^2.83.0"
   }
