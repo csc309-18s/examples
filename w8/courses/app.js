@@ -139,7 +139,10 @@ const db = (function() {
     },
     remove: function(i) {
       delete database[i]
-    }
+    },
+	drop: function() {
+	  database = {}
+	}
   };
 })();
 

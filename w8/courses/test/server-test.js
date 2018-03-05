@@ -29,6 +29,16 @@ describe('Server', () => {
     this.server.close();
   });
 
+  beforeEach(done => {
+    console.log("BEFORE");
+    console.log(db.findAll());
+  	db.drop();
+	db.add(fixtures.courseZero);
+    console.log("AFTER");
+    console.log(db.findAll());
+	done();
+  });
+
 
   // Simplest possible test that just confirms that the app exists
   it('should exist', () => {
@@ -58,7 +68,7 @@ describe('Server', () => {
     });
     
     it('should receive and store data', (done) => {
-      let payload = fixtures.validCourse;
+      let payload = fixtures.courseEdit;
 
       this.request.post('/courses', { form: payload }, (error, response) => {
         if (error) { 
@@ -94,6 +104,17 @@ describe('Server', () => {
         done();
       }); 
     });
+  });
+
+  describe('DELETE /courses/:id', () => {
+    it('should remove a course from the db object', (done) => {
+	  this.request.delete('/courses/CSC309', (error, response) => {
+	    let courses = db.findAll();
+		console.log(courses);
+		assert(1 == 0, 'placeholder');
+	  });
+	  done();
+	});
   });
   
 });
