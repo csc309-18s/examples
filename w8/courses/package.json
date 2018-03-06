@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha",
-	"lint": "./node_modules/.bin/eslint .; exit 0", 
+	"lint": "./node_modules/.bin/eslint .",
+	"pretest": "./npm run lint",
     "start": "node app.js"
   },
   "keywords": [],
