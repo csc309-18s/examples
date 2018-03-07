@@ -3,8 +3,8 @@
 /* eslint no-console: "off" */
 
 const assert = require('assert');
-const app = require('../app.js');
-const db = require('../mockdb.js');
+const app = require('../src/app.js');
+const db = require('../src/mockdb.js');
 const fixtures = require('./fixtures');
 const request = require('request');
 
