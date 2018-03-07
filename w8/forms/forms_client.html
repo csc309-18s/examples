@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>Form Example</title>
+        <script src="scripts/jquery-3.0.0.min.js" defer></script>
+        <script src="scripts/scripts.js" defer></script>
+    </head>
+    <body>
+        
+        <h1>Give us your personal information</h1>
+        <!--
+        <form action="give_info" method="post" autocomplete="on">
+        -->
+        
+        <form method="post" autocomplete="on">
+            <label id="usernameField">
+                <span class="label">Username</span>
+                <input name="username" type="text" 
+                       pattern="[a-zA-Z0-9]+" > <br>
+            </label>
+            
+            <label id="passwordField">
+                <span class="label">Password</span>
+                <input type="password" id="password" name="password">
+            </label>
+            
+            <label>
+                <span class="label">Email</span>
+                <input name="email" type="email" required></input>
+            </label>
+
+            <label>
+                <span class="label">Birthday</span>
+                <input name="birthday" type="date" required></input>
+            </label>
+
+            <!-- Create a Dropdown-->
+            
+            <label>
+                <span class="label">Favourite Programming Language</span>
+                <select name="language">
+                    <option disabled selected value> -- select an option --                         </option>
+                    <option value="python">Python</option>
+                    <option value="c">C</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="scala">Scala</option>
+                </select>
+            </label>
+            
+            <br>
+            <label>
+                <span class="label">Comments</span>
+                <textarea rows="4" columns="50"></textarea>
+            </label>
+
+            <input id="clientButton" type="submit" value="Submit>"><br>
+            <input type="reset" value="Reset>"><br>
+            
+        </form>
+    </body>
+    
+</html>

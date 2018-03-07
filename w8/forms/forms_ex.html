@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>Form Example</title>
+    </head>
+    <body>
+        
+        <h1>Give us your info</h1>
+        
+        <form method="post">
+            <label>
+                <span class="label">Username</span>
+                <input name="username" type="text"> <br>
+            </label>
+            
+            <label id="passwordField">
+                <span class="label">Password</span>
+                <input type="password" id="password" name="password">
+            </label>
+            
+            <label>
+                <span class="label">Email</span>
+                <input name="email" type="email"></input>
+            </label>
+
+            <label>
+                <span class="label">Birthday</span>
+                <input name="birthday" type="date"></input>
+            </label>
+            
+
+            <!-- Create a Dropdown-->
+            
+            <label>
+                <span class="label">Favourite Programming Language</span>
+                <select name="language">
+                    <option disabled selected value> -- select an option --                         </option>
+                    <option value="python">Python</option>
+                    <option value="c">C</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="scala">Scala</option>
+                </select>
+            </label>
+            
+            <br>
+            <label>
+                <span class="label">Comments</span>
+                <textarea name="comments" rows="4" columns="50"></textarea>
+            </label>
+
+            <input type="submit" value="Submit>"><br>
+            <input type="reset" value="Reset>"><br>
+            
+        </form>
+
+        <script src="scripts/jquery-3.0.0.min.js"></script>
+        <script>
+            // Instead of using the standard form submit, we will post
+            // the data using an ajax call
+            $('form').submit(function (e) {
+            e.preventDefault();
+                $.post('/give_info', $('form').serialize());
+            });
+
+        </script>
+
+    </body>
+</html>
