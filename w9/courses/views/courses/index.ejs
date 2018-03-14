@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </head>
+  <body style="padding:40px;">
+    <% include ../partials/_header %>
+
+    <a href="/courses/create" class="btn btn-primary">Create New Course</a>
+    <hr>
+    <table class="table table-bordered table-striped">
+      <% for (let i = 0; i < courses.length; i++) { %>
+        <tr>
+          <td><%= courses[i].id %></td>
+          <td><%= courses[i].title %></td>
+          <td><%= courses[i].instructor %></td>
+          <td>
+            <a href="/courses/<%= courses[i].id %>/edit" class="btn btn-default">Edit</a>
+          </td>
+          <td>
+            <form action="/courses/<%= courses[i].id %>?_method=DELETE" method="POST">
+              <button class="btn btn-default">Delete !</button>
+            </form>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+  </body>
+</html>
