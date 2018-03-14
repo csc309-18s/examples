@@ -1,6 +1,6 @@
 script:
   - cd w8/courses
   - npm install
-  - npm test
+  - npm build
 notifications:
   email: false

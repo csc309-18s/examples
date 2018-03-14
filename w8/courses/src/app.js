@@ -69,13 +69,6 @@ app.get('/courses', (req, res) => {
   });
 });
 
-app.get('/courses/csc404', (req, res) => {
-  res.send(`<html>
-    <body>
-      <p>This is not a REAL course</p>
-    </body>
-  </html`);
-});
 
 app.post('/courses', (req, res) => {
   if (req.body.code) {
