@@ -4,5 +4,23 @@
       "when": "",
       "title": "Programming on the Web",
       "instructor": "Gonzalez"
-    }
+    },
+    {
+      "id": "CSC209",
+      "when": "",
+      "title": "Software Tools and Systems Programming",
+      "instructor": "Craig"
+	},
+    {
+      "id": "CSC108",
+      "when": "",
+      "title": "Introduction to Computer Programming",
+      "instructor": "Smith"
+	},
+    {
+      "id": "CSC148",
+      "when": "",
+      "title": "Introduction to Computer Science",
+      "instructor": "Heap"
+	}
 ]
