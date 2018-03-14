@@ -15,7 +15,7 @@ const courseSchema = new Schema({
   },
   when: {
     type: Date,
-    requried: true,
+    default: Date.now(),
   },
   title: {
     type: String,
@@ -31,7 +31,11 @@ const courseSchema = new Schema({
 
 
 // Doc for Mongoose Connections: http://mongoosejs.com/docs/connections
-mongoose.connect('mongodb://localhost/coursesdb');
+mongoose.connect('mongodb://localhost/coursesdb', function(error) {
+  if (error) console.log(error);
+  
+  console.log("Database connection successful");
+});
 
 // Doc for Mongoose Models: http://mongoosejs.com/docs/models
 
