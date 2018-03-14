@@ -72,5 +72,9 @@ The front end for this part of the application hasn't changed from our previous 
 
 The `addOne` function in `routes/course-routes.js` creates a new Course model object, fills it in with the data from the HTTP POST request, and calls `save` to save it to the database.
 
+## TODO
+
+ - Fix up the tests so they work with Mongoose.
+
 
 
